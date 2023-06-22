@@ -38,8 +38,9 @@ export default class Building
         {
             if(child instanceof THREE.Mesh)
             {
-                child.castShadow = true
+                child.castShadow = true                
             }
+
         })
     }
 
@@ -58,31 +59,31 @@ export default class Building
                 switch (child.material.color.b) 
                 {
                     case 1:
-                        // Central frame
+                        // Frame
                         child.position.set(- 65, 100, 0)
                         break
                     case 0.8627451:
-                        // All floors
+                        // Floor
                         child.position.set(- 70, 0, - 15)
                         break
                     case 0.6666667:
-                        // Lower level platforms 
+                        // Platform
                         child.position.set(- 130, 20, 0)
                         break
                     case 0.54901963:
-                        // Roof and floor
+                        // Roof/Floor
                         child.position.set(- 70, - 130, 0)
                         break
                     case 0.29803923:
-                        // Yellow apartments 
+                        // Yellow apartment
                         child.position.set(0, 100, - 15)
                         break
                     case 0.6156863:
-                        // Turquoise apartments
+                        // Turquoise apartment
                         child.position.set(0, - 100, - 15)
                         break
                     case 0.24705882:
-                        // Tan apartments
+                        // Tan apartment
                         child.position.set(0, 0, - 15)
                     default: 
                 }
