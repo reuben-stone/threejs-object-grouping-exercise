@@ -8,9 +8,8 @@ export default class Debug extends EventEmitter
         super()
         
         this.ui = new dat.GUI()
-        this.ui.title('Options')
-
-        this.actionsFolder = this.ui.addFolder( 'Actions' )
+        this.ui.title('Actions')
+        
         this.actionsObj = {
             clusterObjects: () => 
             {
@@ -21,7 +20,7 @@ export default class Debug extends EventEmitter
                 this.trigger('reset')
             }   
         }
-        this.actionsFolder.add(this.actionsObj, 'clusterObjects').name('Cluster Objects')
-        this.actionsFolder.add(this.actionsObj, 'resetObjects').name('Reset')
+        this.ui.add(this.actionsObj, 'clusterObjects').name('Cluster Objects')
+        this.ui.add(this.actionsObj, 'resetObjects').name('Reset')
     }
 }

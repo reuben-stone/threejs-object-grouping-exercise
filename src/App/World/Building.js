@@ -46,10 +46,59 @@ export default class Building
     cluster()
     {
         console.log("Clustering objects")
+
+        console.log(this.app)
+
+        this.model.traverse((child) => 
+        {
+            if(child instanceof THREE.Mesh)
+            {
+                // console.log(child)
+
+                switch (child.material.color.b) 
+                {
+                    case 1:
+                        // Central frame
+                        child.position.set(- 65, 100, 0)
+                        break
+                    case 0.8627451:
+                        // All floors
+                        child.position.set(- 70, 0, - 15)
+                        break
+                    case 0.6666667:
+                        // Lower level platforms 
+                        child.position.set(- 130, 20, 0)
+                        break
+                    case 0.54901963:
+                        // Roof and floor
+                        child.position.set(- 70, - 130, 0)
+                        break
+                    case 0.29803923:
+                        // Yellow apartments 
+                        child.position.set(0, 100, - 15)
+                        break
+                    case 0.6156863:
+                        // Turquoise apartments
+                        child.position.set(0, - 100, - 15)
+                        break
+                    case 0.24705882:
+                        // Tan apartments
+                        child.position.set(0, 0, - 15)
+                    default: 
+                }
+            }
+        })
     }
+    
     reset()
     {
-        console.log("Resetting")
+        this.model.traverse((child) => 
+        {
+            if(child instanceof THREE.Mesh)
+            {
+                child.position.set(0, 0, 0)
+            }
+        })
     }
 
 }

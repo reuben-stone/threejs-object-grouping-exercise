@@ -18,13 +18,6 @@ export default class World
             this.environment = new Environment()
             this.building = new Building()
             this.apartment = new Apartment()
-
-            // const KOPEModel2 = this.resources.items.KOPEModel2
-            // KOPEModel2.scene.scale.set(0.3, 0.3, 0.3)
-            // KOPEModel2.scene.position.set(- 2, - 4, 4.5)
-            // KOPEModel2.scene.rotation.y = Math.PI * 0.5
-
-            // this.scene.add(KOPEModel2.scene)
         })
     }
 
