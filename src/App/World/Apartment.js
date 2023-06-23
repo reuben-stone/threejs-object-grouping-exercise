@@ -53,8 +53,6 @@ export default class Apartment
         {
             if(child instanceof THREE.Mesh)
             {
-                console.log(child)
-
                 switch (child.material.color.b) 
                 {
                     case 0.7254902:
@@ -81,34 +79,50 @@ export default class Apartment
 
     cluster()
     {
-        // this.model.traverse((child) => 
-        // {
-        //     if(child instanceof THREE.Mesh)
-        //     {
-        //         console.log(child)
+        // Set empty clusters object
+        let clusteredObjects = {}
+        clusteredObjects.concrete = []
+        clusteredObjects.wallpaper = []
+        clusteredObjects.rendering = []
+        clusteredObjects.plaster = []
 
-        //         switch (child.material.color.b) 
-        //         {
-        //             case 0.7254902:
-        //                 // Central concrete walls
-        //                 child.position.set(0, - 30, 0)
-        //                 break
-        //             case 1:
-        //                 // Wallpaper
-        //                 child.position.set(0, - 20, 0)
-        //                 break
-        //             case 0.47058824:
-        //                 // Rendering?
-        //                 child.position.set(0, - 10, 0)
-        //                 break
-        //             case 0.4117647:
-        //                 // Plaster board panels
-        //                 child.position.set(0, 10, 0)
-        //                 break
-        //             default: 
-        //         }
-        //     }
-        // })
+        this.model.traverse((child) => 
+        {
+            if(child instanceof THREE.Mesh)
+            {
+                switch (child.material.color.b) 
+                {
+                    case 0.7254902:
+                        // concrete
+                        clusteredObjects.concrete.push(child)
+                        break
+                    case 1:
+                        // Wallpaper
+                        clusteredObjects.wallpaper.push(child)
+                        break
+                    case 0.47058824:
+                        // Rendering
+                        clusteredObjects.rendering.push(child)
+                        break
+                    case 0.4117647:
+                        // Plaster board 
+                        clusteredObjects.plaster.push(child)
+                        break
+                    default: 
+                }
+            }
+        })
+
+        // console.log(clusteredObjects)
+
+        for(const cluster in clusteredObjects)
+        {      
+            alert(`Current cluster is ${cluster}, and has ${cluster.length} objects`)
+            
+            // Group the meshes in this cluster
+
+
+        }
     }
     
     reset()

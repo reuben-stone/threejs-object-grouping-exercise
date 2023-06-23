@@ -54,8 +54,6 @@ export default class Building
         {
             if(child instanceof THREE.Mesh)
             {
-                // console.log(child)
-
                 switch (child.material.color.b) 
                 {
                     case 1:
@@ -93,51 +91,69 @@ export default class Building
 
     cluster()
     {
-        // console.log(this.app)
+        // Set empty clusters object
+        let clusteredObjects = {}
+        clusteredObjects.frames = []
+        clusteredObjects.floors = []
+        clusteredObjects.platforms = []
+        clusteredObjects.roofFloor = []
+        clusteredObjects.apartmentsYellow = []
+        clusteredObjects.apartmentsTurquiose = []
+        clusteredObjects.apartmentsTan = []
 
-        // this.model.traverse((child) => 
-        // {
-        //     if(child instanceof THREE.Mesh)
-        //     {
-        //         // console.log(child)
+        this.model.traverse((child) => 
+        {
+            if(child instanceof THREE.Mesh)
+            {
+                switch (child.material.color.b) 
+                {
+                    case 1:
 
-        //         switch (child.material.color.b) 
-        //         {
-        //             case 1:
-        //                 // Frame
-        //                 child.position.set(- 65, 100, 0)
-        //                 break
-        //             case 0.8627451:
-        //                 // Floor
-        //                 child.position.set(- 70, 0, - 15)
-        //                 break
-        //             case 0.6666667:
-        //                 // Platform
-        //                 child.position.set(- 130, 20, 0)
-        //                 break
-        //             case 0.54901963:
-        //                 // Roof/Floor
-        //                 child.position.set(- 70, - 130, 0)
-        //                 break
-        //             case 0.29803923:
-        //                 // Yellow apartment
-        //                 child.position.set(0, 100, - 15)
-        //                 break
-        //             case 0.6156863:
-        //                 // Turquoise apartment
-        //                 child.position.set(0, - 100, - 15)
-        //                 break
-        //             case 0.24705882:
-        //                 // Tan apartment
-        //                 child.position.set(0, 0, - 15)
-        //             default: 
-        //         }
-        //     }
-        // })
+                        // Frame
+                        clusteredObjects.frames.push(child)
+                        break
+                    case 0.8627451:
+                        // Floor
+                        clusteredObjects.floors.push(child)
+                        break
+                    case 0.6666667:
+                        // Platform
+                        clusteredObjects.platforms.push(child)
+                        break
+                    case 0.54901963:
+                        // Roof/Floor
+                        clusteredObjects.roofFloor.push(child)
+                        break
+                    case 0.29803923:
+                        // Yellow apartment
+                        clusteredObjects.apartmentsYellow.push(child)
+                        break
+                    case 0.6156863:
+                        // Turquoise apartment
+                        clusteredObjects.apartmentsTurquiose.push(child)
+                        break
+                    case 0.24705882:
+                        // Tan apartment
+                        clusteredObjects.apartmentsTan.push(child)
+                    default: 
+                }
+            }
+        })
+
+        // console.log(clusteredObjects)
+
+        for(const cluster in clusteredObjects)
+        {      
+            console.log(`Current cluster is ${cluster}, and has ${cluster.length} objects`)
+            
+            // Group the meshes in this cluster
+
+
+        }
     }
     
     reset()
-    {
+    {   
         this.model.traverse((child) => 
         {
             if(child instanceof THREE.Mesh)
