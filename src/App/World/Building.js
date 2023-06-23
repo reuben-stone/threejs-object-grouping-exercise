@@ -16,6 +16,10 @@ export default class Building
         this.setModel()
 
         // Debug
+        this.debug.on('explode', () => 
+        {
+            this.explode()
+        })
         this.debug.on('cluster', () => 
         {
             this.cluster()
@@ -44,12 +48,8 @@ export default class Building
         })
     }
 
-    cluster()
+    explode()
     {
-        console.log("Clustering objects")
-
-        console.log(this.app)
-
         this.model.traverse((child) => 
         {
             if(child instanceof THREE.Mesh)
@@ -89,6 +89,51 @@ export default class Building
                 }
             }
         })
+    }
+
+    cluster()
+    {
+        // console.log(this.app)
+
+        // this.model.traverse((child) => 
+        // {
+        //     if(child instanceof THREE.Mesh)
+        //     {
+        //         // console.log(child)
+
+        //         switch (child.material.color.b) 
+        //         {
+        //             case 1:
+        //                 // Frame
+        //                 child.position.set(- 65, 100, 0)
+        //                 break
+        //             case 0.8627451:
+        //                 // Floor
+        //                 child.position.set(- 70, 0, - 15)
+        //                 break
+        //             case 0.6666667:
+        //                 // Platform
+        //                 child.position.set(- 130, 20, 0)
+        //                 break
+        //             case 0.54901963:
+        //                 // Roof/Floor
+        //                 child.position.set(- 70, - 130, 0)
+        //                 break
+        //             case 0.29803923:
+        //                 // Yellow apartment
+        //                 child.position.set(0, 100, - 15)
+        //                 break
+        //             case 0.6156863:
+        //                 // Turquoise apartment
+        //                 child.position.set(0, - 100, - 15)
+        //                 break
+        //             case 0.24705882:
+        //                 // Tan apartment
+        //                 child.position.set(0, 0, - 15)
+        //             default: 
+        //         }
+        //     }
+        // })
     }
     
     reset()

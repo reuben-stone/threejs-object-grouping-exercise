@@ -16,6 +16,10 @@ export default class Apartment
         this.setModel()
 
         // Debug
+        this.debug.on('explode', () => 
+        {
+            this.explode()
+        })
         this.debug.on('cluster', () => 
         {
             this.cluster()
@@ -43,7 +47,7 @@ export default class Apartment
         })
     }
 
-    cluster()
+    explode()
     {
         this.model.traverse((child) => 
         {
@@ -73,6 +77,38 @@ export default class Apartment
                 }
             }
         })
+    }
+
+    cluster()
+    {
+        // this.model.traverse((child) => 
+        // {
+        //     if(child instanceof THREE.Mesh)
+        //     {
+        //         console.log(child)
+
+        //         switch (child.material.color.b) 
+        //         {
+        //             case 0.7254902:
+        //                 // Central concrete walls
+        //                 child.position.set(0, - 30, 0)
+        //                 break
+        //             case 1:
+        //                 // Wallpaper
+        //                 child.position.set(0, - 20, 0)
+        //                 break
+        //             case 0.47058824:
+        //                 // Rendering?
+        //                 child.position.set(0, - 10, 0)
+        //                 break
+        //             case 0.4117647:
+        //                 // Plaster board panels
+        //                 child.position.set(0, 10, 0)
+        //                 break
+        //             default: 
+        //         }
+        //     }
+        // })
     }
     
     reset()

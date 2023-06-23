@@ -11,6 +11,10 @@ export default class Debug extends EventEmitter
         this.ui.title('Actions')
         
         this.actionsObj = {
+            explodeObjects: () => 
+            {
+                this.trigger('explode')
+            },
             clusterObjects: () => 
             {
                 this.trigger('cluster')
@@ -20,7 +24,8 @@ export default class Debug extends EventEmitter
                 this.trigger('reset')
             }   
         }
-        this.ui.add(this.actionsObj, 'clusterObjects').name('Cluster Objects')
+        this.ui.add(this.actionsObj, 'explodeObjects').name('Explode')
+        this.ui.add(this.actionsObj, 'clusterObjects').name('Cluster')
         this.ui.add(this.actionsObj, 'resetObjects').name('Reset')
     }
 }
