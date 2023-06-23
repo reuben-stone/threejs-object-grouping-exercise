@@ -117,7 +117,7 @@ export default class Apartment
 
         for(const cluster in clusteredObjects)
         {      
-            alert(`Current cluster is ${cluster}, and has ${cluster.length} objects`)
+            console.log(`New object cluster '${cluster}' created. With ${cluster.length} Objects (Meshes)`)
             
             // Group the meshes in this cluster
 
