@@ -11,19 +11,9 @@ export default class Camera
         this.sizes = this.app.sizes
         this.scene = this.app.scene
         this.canvas = this.app.canvas
-        this.debug = this.app.debug
 
         this.setInstance()
         this.setOrbitControls()
-
-        this.debug.on('cluster', () => 
-        {
-            this.panOut()
-        })
-        this.debug.on('reset', () => 
-        {
-            this.resetCamera()
-        })
     }
 
     setInstance()
@@ -48,15 +38,5 @@ export default class Camera
     update()
     {
         this.controls.update()
-    }
-
-    panOut()
-    {   
-        // this.instance.position.z = 14
-    }
-
-    resetCamera()
-    {
-        // this.instance.position.set(2.8, 1.8, 7.2)
     }
 }
